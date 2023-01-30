@@ -21,7 +21,7 @@ public class Controller {
         return pictureService.listAllMotionPictures();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<MotionPicture> getByid (@PathVariable int id){
         try{
             MotionPicture pic = pictureService.getMotionPicture(id);
@@ -31,12 +31,19 @@ public class Controller {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/addNew")
     public void addNewMovie(@RequestBody MotionPicture pic){
-        pictureService.voidSaveNew(pic);
+        System.out.println(pic.getId());
+        System.out.println(pic.getName());
+        System.out.println(pic.getYear());
+        System.out.println(pic.getImageUrl());
+        System.out.println(pic.getGenre());
+        System.out.println(pic.getRank());
+        System.out.println(pic.isTVShow());
+        pictureService.saveNew(pic);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable int id){
         pictureService.deleteMotionPicture(id);
     }

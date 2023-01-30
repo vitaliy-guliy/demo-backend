@@ -3,7 +3,7 @@ package com.redhat.demo.webback.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="users")
+@Table(name="MotionPictures")
 public class MotionPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +25,8 @@ public class MotionPicture {
     }
     public MotionPicture(
             int id,
-            int year,
             String name,
+            int year,
             String imageUrl,
             String genre,
             int rank,
@@ -41,15 +41,63 @@ public class MotionPicture {
         this.isTVShow = isTVShow;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public int getRank() {
+        return rank;
     }
 
     public void setRank(int rank) {
         this.rank = rank;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public String toString(){
+        return name + "year" + year + imageUrl + this.rank + this.genre + this.isTVShow;
+    }
+
+    public boolean isTVShow() {
+        return isTVShow;
+    }
+
+    public void setTVShow(boolean TVShow) {
+        isTVShow = TVShow;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
