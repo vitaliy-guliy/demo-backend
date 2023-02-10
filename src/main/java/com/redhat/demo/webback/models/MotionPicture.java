@@ -8,7 +8,7 @@ public class MotionPicture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "_year")
     private int year;
     @Column(nullable = false)
     private String name;
