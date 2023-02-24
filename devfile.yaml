@@ -1,0 +1,44 @@
+schemaVersion: 2.1.0
+metadata:
+  name: java-backend
+components:
+  - name: tools
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8@sha256:ac5aaba0bbf1caa7f23205ab837e3029ff9f605211ebf38bdf4b9f1b8fb1ba83
+      memoryLimit: 3Gi
+      endpoints:
+        - exposure: public
+          name: web
+          protocol: tcp
+          targetPort: 8081
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+  - name: m2
+    volume:
+      size: 1G
+  - name: postgresql
+    container:
+      image: registry.redhat.io/rhel8/postgresql-10:latest
+      endpoints:
+        - exposure: internal
+          targetPort: 5432
+          name: postgresql
+          protocol: tcp
+          attributes:
+            discoverable: true          
+      env:
+        - name: POSTGRESQL_USER
+          value: user
+        - name: POSTGRESQL_PASSWORD
+          value: pass
+        - name: POSTGRESQL_ROOT_PASSWORD
+          value: root
+        - name: POSTGRESQL_DATABASE
+          value: demo
+      volumeMounts:
+        - name: data
+          path: /var/lib/mysql
+  - name: data
+    volume:
+      size: 256Mi
