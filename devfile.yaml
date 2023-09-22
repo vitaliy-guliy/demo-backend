@@ -6,7 +6,8 @@ components:
     container:
       # image: registry.redhat.io/devspaces/udi-rhel8@sha256:de622392f9d4ca5a22106695d812cbe480fdc85af20052476c1eea17e167fac1
       # image: registry.redhat.io/devspaces/udi-rhel8@sha256:5db26e302c737e6f449d1cb08cb1f3eaa76150d831127825fb6e4e1c68176e35
-      image: quay.io/aobuchow/universal-developer-image:stow
+      # image: quay.io/aobuchow/universal-developer-image:stow
+      image: quay.io/vgulyy/universal-developer-image:devspaces-udi-test1
       memoryLimit: 3Gi
       endpoints:
         - exposure: public
